@@ -1,8 +1,8 @@
 # 4×4 Serial Multiplier (Verilog)
 
-A class project: a 4-bit × 4-bit multiplier with a serial interface. The two operands
-are shifted in one bit at a time, multiplied, and the 8-bit product is shifted back out
-serially, with a small state machine running the input → multiply → output sequence.
+A 4-bit × 4-bit multiplier with a serial interface. The two operands are shifted in one
+bit at a time, multiplied, and the 8-bit product is shifted back out serially, with a
+small state machine running the input → multiply → output sequence.
 
 Written and simulated with Cadence Xcelium; it also runs under Icarus Verilog.
 
