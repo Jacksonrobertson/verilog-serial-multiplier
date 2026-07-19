@@ -65,7 +65,6 @@ tb/                  testbenches
 ├── multiplier4_tb.v combinational multiplier test
 ├── serial_out8_tb.v serial-out shift register test
 └── serial_in8_tb.v  (module `serial_out8_tb`; a near-duplicate of the serial-out bench)
-Makefile             Icarus Verilog build/run targets
 ```
 
 ## Module reference
@@ -82,21 +81,20 @@ Makefile             Icarus Verilog build/run targets
 
 ## Simulation
 
+Compile a testbench together with the RTL and run it — each testbench is its own
+top module.
+
 ### Icarus Verilog (open source)
 
 ```sh
-make             # build + run the self-terminating unit testbenches
-make multiplier4 # combinational multiplier testbench
-make controller  # FSM testbench
-make serial_out8 # serial-out shift register testbench
-make top         # elaborate the full-design testbench (see note)
-make clean
-```
+# full design
+iverilog -s Multiplier_tb -o sim.vvp rtl/*.v tb/Multiplier_tb.v && vvp sim.vvp
 
-Each unit target compiles the design plus one testbench into `build/` and runs it
-with `vvp`. The full-design testbench (`Multiplier_tb`) ends with `$stop` — an
-interactive pause under Cadence Xcelium. Icarus `vvp` does not terminate on `$stop`,
-so `make top` only elaborates it; run the complete simulation with Xcelium.
+# individual modules
+iverilog -s multiplier4_tb -o sim.vvp rtl/*.v tb/multiplier4_tb.v && vvp sim.vvp
+iverilog -s controller_tb  -o sim.vvp rtl/*.v tb/controller_tb.v  && vvp sim.vvp
+iverilog -s serial_out8_tb -o sim.vvp rtl/*.v tb/serial_out8_tb.v && vvp sim.vvp
+```
 
 ### Cadence Xcelium (original toolchain)
 

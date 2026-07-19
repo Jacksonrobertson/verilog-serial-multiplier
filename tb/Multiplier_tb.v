@@ -75,7 +75,7 @@ module Multiplier_tb;
 		
 		#250;
 
-		#10 $stop;
+		#10 $finish;
 	end
 
 	initial $monitor($time, " clock=%b, reset=%b, start=%b, in=%b, done=%b, out=%b", clock, reset, start, in, done, out);
