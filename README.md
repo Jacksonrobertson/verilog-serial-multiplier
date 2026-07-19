@@ -85,14 +85,18 @@ Makefile             Icarus Verilog build/run targets
 ### Icarus Verilog (open source)
 
 ```sh
-make            # build + run the top-level Multiplier_tb
-make controller # FSM testbench
-make multiplier4# combinational multiplier testbench
-make serial_out8# serial-out shift register testbench
+make             # build + run the self-terminating unit testbenches
+make multiplier4 # combinational multiplier testbench
+make controller  # FSM testbench
+make serial_out8 # serial-out shift register testbench
+make top         # elaborate the full-design testbench (see note)
 make clean
 ```
 
-Each target compiles the design plus one testbench into `build/` and runs it with `vvp`.
+Each unit target compiles the design plus one testbench into `build/` and runs it
+with `vvp`. The full-design testbench (`Multiplier_tb`) ends with `$stop` — an
+interactive pause under Cadence Xcelium. Icarus `vvp` does not terminate on `$stop`,
+so `make top` only elaborates it; run the complete simulation with Xcelium.
 
 ### Cadence Xcelium (original toolchain)
 
