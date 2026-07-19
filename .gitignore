@@ -1,0 +1,21 @@
+# Icarus Verilog build output
+build/
+*.vvp
+*.vcd
+
+# Cadence Xcelium / Virtuoso simulation artifacts
+xcelium.d/
+INCA_libs/
+waves.shm/
+*.shm/
+.simvision/
+*.log
+*.history
+*.diag
+*.key
+.symbol*
+xrun.*
+
+# Editor backups / OS cruft
+*~
+.DS_Store
